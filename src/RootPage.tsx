@@ -11,30 +11,39 @@ import { TransitionPlayground } from './root-components/transition-playground'
 import { transitions } from './motion/transitionPresets'
 import './Root.css'
 import '@fontsource-variable/inter'
+import { useShouldShowNavbar } from './hooks/use-should-show-navbar'
 
 export default function Root() {
   const { data: user, isLoading } = useAuth()
+
+  const shouldRender = useShouldShowNavbar()
 
   return (
     <MotionConfig reducedMotion='user' transition={transitions.snappy}>
       <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
         <MotionProvider>
-          <div className='flex h-screen flex-col bg-background text-foreground'>
-            <header className='border-b'>
-              <Nav user={user} userLoading={isLoading} />
-            </header>
-            <main className='flex-1 px-4 py-12 sm:px-6 sm:py-40 lg:px-8'>
-              <div className='mx-auto max-w-7xl'>
-                <Outlet />
-              </div>
+          <div className='bg-background text-foreground'>
+            {
+              shouldRender && (
+                <header className='border-b'>
+                  <Nav user={user} userLoading={isLoading} />
+                </header>
+              )
+            }
+            <main>
+              <Outlet />
             </main>
             <Toaster />
             <ScrollToTop />
-            <footer className='relative z-50 border-t border-input bg-background'>
-              <div className='relative z-50 mx-auto max-w-7xl'>
-                <Footer />
-              </div>
-            </footer>
+            {
+              shouldRender && (
+                <footer className='relative z-50 border-t border-input bg-background'>
+                  <div className='relative z-50 mx-auto max-w-7xl'>
+                    <Footer />
+                  </div>
+                </footer>
+              )
+            }
             <TransitionPlayground />
           </div>
         </MotionProvider>

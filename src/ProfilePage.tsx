@@ -4,6 +4,7 @@ import { fadeIn } from './motion/transitionPresets'
 import { Link as WaspLink, routes } from 'wasp/client/router'
 import { Button } from './client/components/ui/button'
 import { useState, useEffect, forwardRef, type ComponentProps } from 'react'
+import PageContainer from './client/components/page-container'
 
 // Define ForwardedLink component
 type ForwardedLinkProps = ComponentProps<typeof WaspLink> & {
@@ -34,37 +35,40 @@ const Profile = ({ user }: { user: AuthUser }) => {
   }, [])
 
   return (
-    <motion.div
-      initial='initial'
-      animate='animate'
-      exit='exit'
-      variants={fadeIn}
-      className='mx-auto flex max-w-7xl flex-col gap-8 px-4 py-12 sm:px-6 sm:py-16 lg:px-8'
-    >
-      <h1 className='text-4xl font-thin tracking-tight'>Profile</h1>
-      <p className='text-lg text-muted-foreground'>
-        {greeting}, {user?.username || 'there'}!
-      </p>
-      <div className='space-y-6 rounded-lg border bg-card p-6 text-card-foreground shadow-sm'>
-        <div className='space-y-2'>
-          <p className='text-sm font-medium text-muted-foreground'>Email</p>
-          <p className='text-lg'>{user?.email || 'N/A'}</p>
+    <PageContainer>
+      <motion.div
+        initial='initial'
+        animate='animate'
+        exit='exit'
+        variants={fadeIn}
+        className='mx-auto flex max-w-7xl flex-col gap-8'
+      >
+        <h1 className='text-4xl font-thin tracking-tight'>Profile</h1>
+        <p className='text-lg text-muted-foreground'>
+          {greeting}, {user?.username || 'there'}!
+        </p>
+        <div className='space-y-6 rounded-lg border bg-card p-6 text-card-foreground shadow-sm'>
+          <div className='space-y-2'>
+            <p className='text-sm font-medium text-muted-foreground'>Email</p>
+            <p className='text-lg'>{user?.email || 'N/A'}</p>
+          </div>
+          <div className='space-y-3'>
+            <p className='text-sm font-medium text-muted-foreground'>
+              Subscription Status
+            </p>
+            <p className='text-lg capitalize'>
+              {subscriptionStatus.replace('_', ' ')}
+            </p>
+            <Button variant='outline' size='sm' className='font-light'>
+              <ForwardedLink to={routes.SubscriptionRoute.to}>
+                {isSubscribed ? 'Manage Subscription' : 'Subscribe Now'}
+              </ForwardedLink>
+            </Button>
+          </div>
         </div>
-        <div className='space-y-3'>
-          <p className='text-sm font-medium text-muted-foreground'>
-            Subscription Status
-          </p>
-          <p className='text-lg capitalize'>
-            {subscriptionStatus.replace('_', ' ')}
-          </p>
-          <Button variant='outline' size='sm' className='font-light'>
-            <ForwardedLink to={routes.SubscriptionRoute.to}>
-              {isSubscribed ? 'Manage Subscription' : 'Subscribe Now'}
-            </ForwardedLink>
-          </Button>
-        </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </PageContainer>
+
   )
 }
 

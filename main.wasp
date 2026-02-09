@@ -61,6 +61,21 @@ route PasswordResetRoute { path: "/password-reset", to: PasswordResetPage }
 route EmailVerificationRoute { path: "/email-verification", to: EmailVerificationPage }
 route NotFoundRoute { path: "*", to: NotFoundPage }
 
+// #region ADMIN ROUTES
+
+route DashboardRoute { path: "/admin/dashboard", to: DashboardPage }
+
+// #endregion
+
+// #region ADMIN PAGES
+
+page DashboardPage {
+  component: import DashboardPage from "@src/admin/pages/dashboard",
+  authRequired: true
+}
+
+// #endregion
+
 page Landing {
   component: import Landing from "@src/landing/LandingPage",
 }
