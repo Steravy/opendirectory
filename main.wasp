@@ -134,3 +134,38 @@ api stripeWebhook {
   httpRoute: (POST, "/stripe-webhooks"),
   entities: [User]
 }
+
+// #region ADMIN ACTIONS
+
+action registerTag {
+  fn: import { registerTag } from "@src/admin/tags/operations/actions/register-tag",
+  entities: [User, Tag],
+  auth: true
+}
+
+action updateTag {
+  fn: import { updateTag } from "@src/admin/tags/operations/actions/update-tag",
+  entities: [User, Tag],
+  auth: true
+}
+
+// #endregion
+
+// #region ADMIN queries
+
+query findAllTags {
+  fn: import { findAllTags } from "@src/admin/tags/operations/queries/find-all-tags",
+  entities: [Tag],
+}
+
+query findTagById {
+  fn: import { findTagById } from "@src/admin/tags/operations/queries/find-tag-by",
+  entities: [Tag],
+}
+
+query findTagBySlug {
+  fn: import { findTagBySlug } from "@src/admin/tags/operations/queries/find-tag-by",
+  entities: [Tag],
+}
+
+// #endregion

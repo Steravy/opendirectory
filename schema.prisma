@@ -59,19 +59,36 @@ model Listing {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
   approvedAt DateTime?
+
+  deletedAt DateTime?
 }
 
 model Category {
-  id       String    @id @default(cuid())
-  name     String
-  slug     String    @unique
-  listings Listing[]
+  id          String    @id @default(cuid())
+  name        String    @unique
+  slug        String    @unique
+  description String?
+  listings    Listing[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@unique([name, slug])
 }
 
 model Tag {
-  id       String       @id @default(cuid())
-  name     String       @unique
-  listings ListingTag[]
+  id          String       @id @default(cuid())
+  name        String       @unique
+  slug        String       @unique
+  description String?
+  listings    ListingTag[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@unique([name, slug])
 }
 
 model ListingTag {
