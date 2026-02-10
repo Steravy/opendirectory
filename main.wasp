@@ -1,23 +1,23 @@
-app roke {
+app OpenDirectory {
   wasp: {
     version: "^0.19.1"
   },
-  title: "Roke: A Full-Stack Wasp Starter with Modern UI Components",
+  title: "OpenDirectory | Fully open-source, self-hosted, web directory engine powered by AI.",
   head: [
-    "<meta name='description' content='A comprehensive Wasp starter template featuring shadcn/ui components, Motion animations, and TypeScript support for building modern full-stack web applications.'>",
+    "<meta name='description' content='OpenDirectory is an open-source engine for running your own directory, where listings automatically become optimized content, newsletters, and traffic — all under your control.'>",
 
-    "<meta property='og:url' content='https://example.com'>",
+    "<meta property='og:url' content='https://opendirectory.app'>",
     "<meta property='og:type' content='website'>",
-    "<meta property='og:title' content='Roke: A Full-Stack Wasp Starter with Modern UI Components'>",
-    "<meta property='og:description' content='A comprehensive Wasp starter template featuring shadcn/ui components, Motion animations, and TypeScript support for building modern full-stack web applications.'>",
-    "<meta property='og:image' content='https://example.com/example.png'>",
+    "<meta property='og:title' content='OpenDirectory: Fully open-source, self-hosted, web directory engine powered by AI'>",
+    "<meta property='og:description' content='OpenDirectory is an open-source engine for running your own directory, where listings automatically become optimized content, newsletters, and traffic — all under your control.'>",
+    "<meta property='og:image' content='https://opendirectory.app/og.png'>",
 
     "<meta name='twitter:card' content='summary_large_image'>",
-    "<meta property='twitter:domain' content='example.com'>",
-    "<meta property='twitter:url' content='https://example.com'>",
-    "<meta name='twitter:title' content='Roke: A Full-Stack Wasp Starter with Modern UI Components'>",
-    "<meta name='twitter:description' content='A comprehensive Wasp starter template featuring shadcn/ui components, Motion animations, and TypeScript support for building modern full-stack web applications.'>",
-    "<meta name='twitter:image' content='https://example.com/example.png'>"
+    "<meta property='twitter:domain' content='opendirectory.app'>",
+    "<meta property='twitter:url' content='https://opendirectory.app'>",
+    "<meta name='twitter:title' content='OpenDirectory: Fully open-source, self-hosted, web directory engine powered by AI'>",
+    "<meta name='twitter:description' content='OpenDirectory is an open-source engine for running your own directory, where listings automatically become optimized content, newsletters, and traffic — all under your control.'>",
+    "<meta name='twitter:image' content='https://opendirectory.app/og.png'>"
   ],
   auth: {
     userEntity: User,
