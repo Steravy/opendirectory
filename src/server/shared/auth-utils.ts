@@ -18,3 +18,10 @@ export const canPerformServerSideAdminAction = (user: AuthUser) => {
         )
     }
 };
+
+export const userCanSeedDeletedItems = (user: AuthUser) => {
+
+    if (!user) return false;
+
+    return user.role === UserRole.OWNER;
+};

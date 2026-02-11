@@ -1,17 +1,19 @@
 import { type FindAllTags } from "wasp/server/operations";
 import { FindAllTagsInput, FindAllTagsResponse } from "../../dto/types";
 import { Prisma } from '@prisma/client';
+import { userCanSeedDeletedItems } from "../../../../server/shared/auth-utils";
 
 export const findAllTags: FindAllTags<FindAllTagsInput, FindAllTagsResponse> = async (args, context) => {
 
     const { page = 1, pageSize = 20, query, includeDeleted = false } = args;
     const take = pageSize > 100 ? 100 : pageSize;
     const skip = (page - 1) * take;
-
+    const userCanSeedDeleted = userCanSeedDeletedItems(context.user!);
     const whereClause: Prisma.TagWhereInput = {};
 
-    if (!includeDeleted) {
-        whereClause.deletedAt = null;
+    if (!userCanSeedDeleted) whereClause.deletedAt = null;
+    else {
+        if (!includeDeleted) whereClause.deletedAt = null;
     }
 
     if (query) {
