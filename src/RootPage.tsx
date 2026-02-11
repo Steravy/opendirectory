@@ -6,12 +6,12 @@ import { ThemeProvider } from './root-components/theme-provider'
 import { Footer } from './root-components/footer'
 import { Nav } from './root-components/nav'
 import { ScrollToTop } from './root-components/scroll-to-top'
-import { Toaster } from './root-components/toaster'
 import { TransitionPlayground } from './root-components/transition-playground'
 import { transitions } from './motion/transitionPresets'
 import './Root.css'
 import '@fontsource-variable/inter'
 import { useShouldShowNavbar } from './hooks/use-should-show-navbar'
+import { Toaster } from './client/components/ui/sonner'
 
 export default function Root() {
   const { data: user, isLoading } = useAuth()

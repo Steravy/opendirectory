@@ -5,9 +5,9 @@ const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 export const slugSchema = z
     .string()
-    .min(2)
-    .max(60)
-    .regex(slugRegex, "Slug must be kebab-case (lowercase, hyphens only)");
+    .min(2, "Slug must be at least 2 characters long")
+    .max(60, "Slug cannot exceed 60 characters")
+    .regex(slugRegex, "Slug must be in kebab-case format (lowercase letters, numbers, and hyphens only). Example: 'web-development'");
 
 export const paginationSchema = z.object({
     page: z.number().int().positive().optional().default(1),
