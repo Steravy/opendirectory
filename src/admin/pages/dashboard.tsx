@@ -14,7 +14,8 @@ import {
     SidebarProvider,
     SidebarTrigger,
 } from "../../client/components/ui/sidebar"
-import RegisterCategoryForm from '../categories/components/register-category-form'
+import RegisterCategoryForm from '../categories/components/forms/register-category-form'
+import RegisterCategoryModal from '../categories/components/modals/register-category-modal'
 
 const DashboardPage = () => {
     return (
@@ -45,7 +46,8 @@ const DashboardPage = () => {
                 </header>
                 <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
 
-                    <RegisterCategoryForm />
+                    {/* <RegisterCategoryForm /> */}
+                    <RegisterCategoryModal />
 
                     {/* <div className="grid auto-rows-min gap-4 md:grid-cols-3">
                         <div className="bg-muted/50 aspect-video rounded-xl" />

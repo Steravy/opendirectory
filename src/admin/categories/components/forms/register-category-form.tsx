@@ -6,13 +6,13 @@ import {
     FieldDescription,
     FieldError,
     FieldGroup
-} from "../../../client/components/ui/field"
-import { Button } from "../../../client/components/ui/button"
-import { Input } from "../../../client/components/ui/input"
-import { Textarea } from "../../../client/components/ui/textarea"
-import { RegisterCategoryInput } from "../dto/types"
-import { registerCategorySchema } from "../dto/schemas"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../../client/components/ui/card"
+} from "../../../../client/components/ui/field"
+import { Button } from "../../../../client/components/ui/button"
+import { Input } from "../../../../client/components/ui/input"
+import { Textarea } from "../../../../client/components/ui/textarea"
+import { RegisterCategoryInput } from "../../dto/types"
+import { registerCategorySchema } from "../../dto/schemas"
+import { Card, CardContent, CardFooter } from "../../../../client/components/ui/card"
 import slugify from "@sindresorhus/slugify"
 import { useEffect, useState } from "react"
 import { registerCategory } from "wasp/client/operations"
@@ -60,14 +60,8 @@ const RegisterCategoryForm = () => {
     }
 
     return (
-        <Card className="w-full sm:max-w-md">
-            <CardHeader>
-                <CardTitle>Register Category</CardTitle>
-                <CardDescription>
-                    Create a new category to organize directory listings.
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
+        <Card className="w-full border-none">
+            <CardContent className="px-0">
 
                 <form id="register-category-form" onSubmit={form.handleSubmit(onSubmit)}>
                     <FieldGroup>
@@ -146,7 +140,7 @@ const RegisterCategoryForm = () => {
 
                 </form>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="px-0 pb-0">
                 <Field orientation="horizontal" className="justify-end">
                     <Button
                         type="button"
