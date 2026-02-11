@@ -1,15 +1,15 @@
-import { type FindAllTags } from "wasp/server/operations";
-import { FindAllTagsInput, FindAllTagsResponse } from "../../dto/types";
+import { type FindAllCategories } from "wasp/server/operations";
+import { FindAllCategoriesInput, FindAllCategoriesResponse } from "../../dto/types";
 import { Prisma } from '@prisma/client';
 import { userCanSeeDeletedItems } from "../../../../server/shared/auth-utils";
 
-export const findAllTags: FindAllTags<FindAllTagsInput, FindAllTagsResponse> = async (args, context) => {
+export const findAllCategories: FindAllCategories<FindAllCategoriesInput, FindAllCategoriesResponse> = async (args, context) => {
 
     const { page = 1, pageSize = 20, query, includeDeleted = false } = args;
     const take = pageSize > 100 ? 100 : pageSize;
     const skip = (page - 1) * take;
     const userCanSeedDeleted = userCanSeeDeletedItems(context.user!);
-    const whereClause: Prisma.TagWhereInput = {};
+    const whereClause: Prisma.CategoryWhereInput = {};
 
     if (!userCanSeedDeleted) whereClause.deletedAt = null;
     else {
@@ -24,7 +24,7 @@ export const findAllTags: FindAllTags<FindAllTagsInput, FindAllTagsResponse> = a
         ];
     }
 
-    return context.entities.Tag.findMany({
+    return context.entities.Category.findMany({
         where: whereClause,
         select: {
             id: true,
@@ -40,4 +40,4 @@ export const findAllTags: FindAllTags<FindAllTagsInput, FindAllTagsResponse> = a
         skip,
     });
 
-}
+};

@@ -19,7 +19,7 @@ export const canPerformServerSideAdminAction = (user: AuthUser) => {
     }
 };
 
-export const userCanSeedDeletedItems = (user: AuthUser) => {
+export const userCanSeeDeletedItems = (user: AuthUser) => {
 
     if (!user) return false;
 

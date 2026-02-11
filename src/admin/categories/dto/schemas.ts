@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { slugSchema, findAllBaseSchema, idSchema, createUpdateRefine, createUpdateRefineMessage } from "../../../server/shared/schemas";
 
-export const registerTagSchema = z.object({
+export const registerCategorySchema = z.object({
     name: z
         .string()
         .min(2, "Name is too short")
@@ -15,7 +15,7 @@ export const registerTagSchema = z.object({
         .optional(),
 });
 
-export const updateTagSchema = z
+export const updateCategorySchema = z
     .object({
         id: idSchema,
         name: z.string().min(2, "Name is too short").max(50, "Name is too long").optional(),
@@ -23,16 +23,16 @@ export const updateTagSchema = z
         description: z.string().max(160, "Description should be under 160 characters").optional().nullable(),
     })
     .refine(
-        createUpdateRefine("Tag"),
+        createUpdateRefine("Category"),
         {
-            message: createUpdateRefineMessage("Tag"),
+            message: createUpdateRefineMessage("Category"),
         }
     );
 
-export const bulkRegisterTagsSchema = z.object({
-    tags: z
-        .array(registerTagSchema)
-        .min(1, "At least one tag is required"),
+export const bulkRegisterCategoriesSchema = z.object({
+    categories: z
+        .array(registerCategorySchema)
+        .min(1, "At least one category is required"),
 });
 
-export const findAllTagsSchema = findAllBaseSchema;
+export const findAllCategoriesSchema = findAllBaseSchema;

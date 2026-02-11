@@ -149,6 +149,18 @@ action updateTag {
   auth: true
 }
 
+action registerCategory {
+  fn: import { registerCategory } from "@src/admin/categories/operations/actions/register-category",
+  entities: [User, Category],
+  auth: true
+}
+
+action updateCategory {
+  fn: import { updateCategory } from "@src/admin/categories/operations/actions/update-category",
+  entities: [User, Category],
+  auth: true
+}
+
 // #endregion
 
 // #region ADMIN queries
@@ -166,6 +178,21 @@ query findTagById {
 query findTagBySlug {
   fn: import { findTagBySlug } from "@src/admin/tags/operations/queries/find-tag-by",
   entities: [Tag],
+}
+
+query findAllCategories {
+  fn: import { findAllCategories } from "@src/admin/categories/operations/queries/find-all-categories",
+  entities: [Category],
+}
+
+query findCategoryById {
+  fn: import { findCategoryById } from "@src/admin/categories/operations/queries/find-category-by",
+  entities: [Category],
+}
+
+query findCategoryBySlug {
+  fn: import { findCategoryBySlug } from "@src/admin/categories/operations/queries/find-category-by",
+  entities: [Category],
 }
 
 // #endregion
