@@ -17,7 +17,7 @@ export const registerTag: RegisterTag<RegisterTagInput, RegisterTagResponse> = a
         select: {
             id: true,
             name: true,
-            slug: true,
+            slug: true
         }
     });
 

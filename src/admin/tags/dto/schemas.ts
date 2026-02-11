@@ -45,3 +45,10 @@ export const bulkRegisterTagsSchema = z.object({
         .array(registerTagSchema)
         .min(1, "At least one tag is required"),
 });
+
+export const findAllTagsSchema = z.object({
+    page: z.number().int().positive().optional().default(1),
+    pageSize: z.number().int().positive().max(100).optional().default(20),
+    query: z.string().min(1).max(100).optional(),
+    includeDeleted: z.boolean().optional().default(false),
+});

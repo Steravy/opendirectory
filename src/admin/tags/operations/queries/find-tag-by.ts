@@ -18,6 +18,13 @@ export const findTagBySlug: FindTagBySlug<FindTagBySlugInput, FindTagBySlugRespo
         where: {
             slug,
             deletedAt: null,
+        },
+        select: {
+            id: true,
+            name: true,
+            slug: true,
+            description: true,
+            createdAt: true,
         }
     });
 
