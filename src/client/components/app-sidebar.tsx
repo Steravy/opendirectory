@@ -50,27 +50,23 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
-      url: "#",
+      title: "Parametrization",
+      url: "/admin/dashboard/",
       icon: SquareTerminal,
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "Category",
+          url: "/admin/dashboard/category",
         },
         {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
+          title: "Tag",
+          url: "/admin/dashboard/tag",
         },
       ],
     },
     {
-      title: "Models",
+      title: "Users",
       url: "#",
       icon: Bot,
       items: [

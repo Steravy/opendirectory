@@ -63,14 +63,26 @@ route NotFoundRoute { path: "*", to: NotFoundPage }
 
 // #region ADMIN ROUTES
 
-route DashboardRoute { path: "/admin/dashboard", to: DashboardPage }
+route AdminDashboardHomeRoute { path: "/admin/dashboard", to: AdminDashboardHomePage }
+route CategoryRoute { path: "/admin/dashboard/category", to: CategoryPage }
+route TagRoute { path: "/admin/dashboard/tag", to: TagPage }
 
 // #endregion
 
 // #region ADMIN PAGES
 
-page DashboardPage {
-  component: import DashboardPage from "@src/admin/pages/dashboard",
+page AdminDashboardHomePage {
+  component: import AdminDashboardHomePage from "@src/admin/pages/AdminDashboardHomePage",
+  authRequired: true
+}
+
+page CategoryPage {
+  component: import CategoryPage from "@src/admin/pages/CategoryPage",
+  authRequired: true
+}
+
+page TagPage {
+  component: import TagPage from "@src/admin/pages/TagPage",
   authRequired: true
 }
 
