@@ -1,17 +1,16 @@
 import React from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../client/components/ui/card"
 import AdminDashboardLayout from '../layout/AdminDashboardLayout'
+import { PageHeader } from '../components/PageHeader'
 
 const AdminDashboardHomePage = () => {
     return (
         <AdminDashboardLayout>
             <div className="space-y-6">
-                <div>
-                    <h1 className="text-3xl font-bold tracking-tight">Admin Dashboard</h1>
-                    <p className="text-muted-foreground">
-                        Welcome to the admin dashboard. Use the sidebar to navigate between different management sections.
-                    </p>
-                </div>
+                <PageHeader
+                    title="Admin Dashboard"
+                    description="Welcome to the admin dashboard. Use the sidebar to navigate between different management sections."
+                />
 
                 <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     <Card>
