@@ -6,6 +6,7 @@ import { PageHeader } from '../components/PageHeader'
 import { TagStats } from '../tags/components/TagStats'
 import { TagDataTable } from '../tags/components/table/TagDataTable'
 import { TagCloud } from '../tags/components/TagCloud'
+import RegisterTagModal from '../tags/components/modals/register-tag-modal'
 import { Separator } from '../../client/components/ui/separator'
 
 const TagPage = () => {
@@ -16,9 +17,7 @@ const TagPage = () => {
                     title="Tag Management"
                     description="Create and manage tags to help organize and filter your directory listings."
                 >
-                    <Button>
-                        Create Tag
-                    </Button>
+                    <RegisterTagModal />
                 </PageHeader>
 
                 {/* Stats Cards */}

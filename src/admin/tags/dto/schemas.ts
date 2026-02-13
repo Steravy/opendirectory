@@ -4,23 +4,24 @@ import { slugSchema, findAllBaseSchema, idSchema, createUpdateRefine, createUpda
 export const registerTagSchema = z.object({
     name: z
         .string()
-        .min(2, "Name is too short")
-        .max(50, "Name is too long"),
+        .min(2, "Tag name must be at least 2 characters long")
+        .max(50, "Tag name cannot exceed 50 characters")
+        .regex(/^[a-zA-Z0-9\s\-_&\/]+$/, "Tag name can only contain letters, numbers, spaces, hyphens, underscores, forward slashes, and ampersands"),
 
     slug: slugSchema,
 
     description: z
         .string()
-        .max(160, "Description should be under 160 characters")
+        .max(160, "Description cannot exceed 160 characters. Keep it concise to help users understand when to use this tag.")
         .optional(),
 });
 
 export const updateTagSchema = z
     .object({
         id: idSchema,
-        name: z.string().min(2, "Name is too short").max(50, "Name is too long").optional(),
+        name: z.string().min(2, "Tag name must be at least 2 characters long").max(50, "Tag name cannot exceed 50 characters").regex(/^[a-zA-Z0-9\s\-_&\/]+$/, "Tag name can only contain letters, numbers, spaces, hyphens, underscores, forward slashes, and ampersands").optional(),
         slug: slugSchema.optional(),
-        description: z.string().max(160, "Description should be under 160 characters").optional().nullable(),
+        description: z.string().max(160, "Description cannot exceed 160 characters. Keep it concise to help users understand when to use this tag.").optional().nullable(),
     })
     .refine(
         createUpdateRefine("Tag"),
